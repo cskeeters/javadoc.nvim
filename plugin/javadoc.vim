@@ -73,7 +73,7 @@ function! s:Open(class)
             echo "Opening ".l:path
             echo "Running: ".l:cmd
         endif
-        execute system(g:javadoc_browser." ".l:path." &")
+        call jobstart(split(cmd), {'detach':1})
         if l:browser_closed && len(l:paths) > 1 && i == 0
             "sleep to avoid 'Firefox is already running, but not responding.'
             :sleep 2
